@@ -8,6 +8,8 @@
 #include "acutest.h"			// Απλή βιβλιοθήκη για unit testing
 
 #include "ADTMap.h"
+#include "ADTList.h"
+
 
 
 // Δημιουργούμε μια ειδική compare συνάρτηση
@@ -32,7 +34,7 @@ void test_create(void) {
 	map_destroy(map);
 }
 
-// Επιστρέφει έναν ακέραιο σε νέα μνήμη με τιμή value
+ //Επιστρέφει έναν ακέραιο σε νέα μνήμη με τιμή value
 int* create_int(int value) {
 	int* p = malloc(sizeof(int));
 	*p = value;
@@ -74,11 +76,10 @@ void test_insert(void) {
 	// Δοκιμάζουμε την insert εισάγοντας κάθε φορά νέους κόμβους
 	for (int i = 0; i < N; i++) {
 		value_array[i] = create_int(i);
-
 		// Εισαγωγή, δοκιμή και έλεγχος ότι ενημερώθηκε το size
 		insert_and_test(map, key_array[i], value_array[i]);
-
 		TEST_ASSERT(map_size(map) == (i + 1)); 
+
 	}
 
 	// Προσθέτουμε ένα κλειδί που είναι __ισοδύναμο__ (όχι ίσο) με το κλειδί του πρώτου κόμβο
@@ -122,8 +123,9 @@ void test_remove(void) {
 
 		map_insert(map, key_array[i], value_array[i]);
 		// Ανά τακτά χρονικά διαστήματα διαγράφουμε κάποιο κλειδί που μόλις βάλαμε
-		if (i % (N / 20) == 0) 
+		if (i % (N / 20) == 0) {
 			TEST_ASSERT(map_remove(map, key_array[i]));
+		}
 	}
 
 	// Δοκιμάζουμε, πριν διαγράψουμε κανονικά τους κόμβους, ότι η map_remove
@@ -145,7 +147,6 @@ void test_remove(void) {
 	free(key_array);
 	free(value_array);
 }
-
 
 void test_find() {
 
@@ -180,6 +181,7 @@ void test_find() {
 	free(key_array);
 	free(value_array);
 }
+
 
 void test_iterate() {
 	Map map = map_create(compare_ints, free, free);
