@@ -14,6 +14,7 @@
 // Ενα map αναπαριστάται από τον τύπο Map
 
 typedef struct map* Map;
+typedef struct map_node_array* MapNodeArray;
 
 
 // Δημιουργεί και επιστρέφει ένα map, στο οποίο τα στοιχεία συγκρίνονται με βάση
