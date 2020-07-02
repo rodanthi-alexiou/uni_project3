@@ -79,3 +79,17 @@ Pointer list_node_value(List list, ListNode node);
 // Επιστρέφει τον κόμβο του στοιχείου, ή LIST_EOF αν δεν βρεθεί.
 
 ListNode list_find_node(List list, Pointer value, CompareFunc compare);
+
+// Επιστρέφει την τιμή στη θέση pos της λίστας list (μη ορισμένο αποτέλεσμα αν pos < 0 ή pos >= size)
+
+Pointer list_get_at(List list, int pos);
+
+// Διαγράφει τον κόμβο node της λίστας list.
+
+void list_remove(List list, ListNode node);
+
+// Προσθέτει όλα τα στοιχεία της λίστας to_append στο τέλος της λίστας list. Η λίστα to_append καταστρέφεται
+// και δεν μπορεί πλέον να χρησιμοποιηθεί (αλλά τα στοιχεία της δεν καταστρέφονται αφού ανήκουν πλέον στη
+// list). Αν list == to_append η συμπεριφορά είναι μη ορισμένη.
+
+void list_append(List list, List to_append); 
