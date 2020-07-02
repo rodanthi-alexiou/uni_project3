@@ -67,7 +67,8 @@ static void destroy_map_node(MapNode node) {
 
 Map map_create(CompareFunc compare, DestroyFunc destroy_key, DestroyFunc destroy_value) {
 	// Δεσμεύουμε κατάλληλα τον χώρο που χρειαζόμαστε για το hash table
-	Map map = malloc(sizeof(*map));
+	Map map = malloc(sizeof(struct map));
+
 	map->capacity = prime_sizes[0];
 	map->array = malloc(map->capacity * sizeof(List));
 
