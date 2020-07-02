@@ -12,6 +12,7 @@
 
 
 
+
 // Δημιουργούμε μια ειδική compare συνάρτηση
 int compare_ints(Pointer a, Pointer b) {
 	return *(int*)a - *(int*)b;
