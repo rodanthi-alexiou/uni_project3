@@ -158,3 +158,61 @@ ListNode list_find_node(List list, Pointer value, CompareFunc compare) {
 
 	return NULL;	// δεν υπάρχει
 }
+
+
+Pointer list_get_at(List list, int pos) {
+
+if(pos>=0 && pos<list_size(list)){
+		ListNode node = list_first(list);
+
+		for(int i = 0; i<pos; i++){
+				node = list_next(list,node);
+		}
+
+		Pointer value = list_node_value(list, node);
+		return value;
+
+}
+else
+	return NULL;
+}
+
+void list_remove(List list, ListNode node) {
+
+int* value = list_node_value(list,node);
+ListNode n = list_first(list);
+int i =0;
+while(value != list_node_value(list,n)){
+	i++;
+	n= list_next(list,n);
+}
+
+if(i==0)
+	list_remove_next(list,LIST_BOF);
+
+else{
+ListNode new = list_first(list);
+for(int k = 0; k<i-1; k++)
+		new = list_next(list,new);
+
+list_remove_next(list,new);
+}
+}
+
+void list_append(List list, List to_append) {
+
+ListNode node;
+	if(list_size(list) == 0)
+			node=list->dummy;
+	else{
+		node = list_last(list);
+	}
+	
+
+		for(int i =0; i<list_size(to_append); i++){
+			list_insert_next(list,node,list_get_at(to_append,i));
+			node=list_last(list);
+		}
+		
+	list_destroy(to_append);
+}
