@@ -9,6 +9,8 @@
 #include "ADTGraph.h"
 #include "ADTMap.h"
 #include "ADTList.h"
+#include "ADTPriorityQueue.h"
+#include "ADTVector.h"
 
 
 struct graph {
@@ -25,11 +27,20 @@ struct adj_node{
     Graph owner;
 };
 
+struct pq_path{
+    Pointer w;
+    int dest;
+};
+
+
+
 int compare_adjnode(Pointer a, Pointer b){
     AdjNode one = a;
     AdjNode two = b;
     return one->owner->compare(one->vertex, two->vertex);
 }
+
+
 
 AdjNode find_adjnode(List list, Pointer vertex1){
     for(ListNode node = list_first(list); node!=LIST_EOF; node = list_next(list, node)){
@@ -41,6 +52,20 @@ AdjNode find_adjnode(List list, Pointer vertex1){
 
 return NULL;
 }
+
+
+AdjNode find_adjnode_pq(PriorityQueue pq, Pointer vertex){
+//    while(pq != NULL){
+       // AdjNode max = pqueue_max(pq);
+        //if(max->owner->compare(max->vertex, vertex) == 0){
+      //      return max;
+    //    }
+  //      pqueue_remove_max(pq);
+//    }
+
+return NULL;
+}
+
 
 // Δημιουργεί και επιστρέφει ένα γράφο, στον οποίο τα στοιχεία (οι κορυφές)
 // συγκρίνονται με βάση τη συνάρτηση compare. Αν destroy_vertex != NULL, τότε
@@ -187,7 +212,60 @@ List graph_get_adjacent(Graph graph, Pointer vertex){
 // target, ή κενή λίστα αν δεν υπάρχει κανένα μονοπάτι. Η λίστα δημιουργείται σε
 // κάθε κληση και είναι ευθύνη του χρήστη να κάνει list_destroy.
 
-List graph_shortest_path(Graph graph, Pointer source, Pointer target);
+List graph_shortest_path(Graph graph, Pointer source, Pointer target){
+
+    //Map dist = map_create(graph->compare, NULL, NULL);
+   // map_set_hash_function(dist, graph->hash_func);
+    //Map prev = map_create(graph->compare, NULL, NULL);
+  //  map_set_hash_function(prev, graph->hash_func);
+
+
+//    map_insert(dist, source, create_int(0));
+    //map_insert(prev, source, NULL);
+
+
+    //PriorityQueue pq = pqueue_create((CompareFunc) compare_adjnode_destination, NULL, NULL);
+
+   //     MapNode node_source = map_find_node(graph->vertex, source);
+
+ //       AdjNode pq_path_node = malloc(sizeof(pq_path_node));
+     //   pq_path_node->w = map_node_key(graph->vertex, node_source);
+       // pq_path_node->weight = 0;
+      //  pq_path_node->owner = graph;
+    //    PriorityQueueNode pq_node =  pqueue_insert(pq, pq_path_node);
+
+  //      map_insert(array, pq_path_node->w, pq_path_node->w);
+
+//        while(pq != NULL){
+           // AdjNode w_node = pqueue_node_value(pq, pq_node);
+          //  Pointer w_pointer = w_node->vertex;
+            //MapNode find = map_find_node(graph->map, w_pointer);
+          //  List neighbors = map_node_value(graph->map, find);
+
+        //    for(ListNode list_node = list_first(neighbors); list_node != LIST_EOF; list_node = list_next(neighbors, list_node)){
+      //          AdjNode temp = list_node_value(neighbors, list_node);
+    //            int alt = w_node->weight + temp->weight;
+
+  //              if(map_find_node(dist, temp->vertex) == MAP_EOF || (graph->compare(map_node_value(dist,  {
+                   
+//return NULL;
+        //        }
+      //              MapNode dist_node = map_find_node(dist, temp->vertex);
+    //                Pointer dist_neighbor = map_node_value(dist, dist_node);
+
+
+
+  //          }
+
+            
+
+
+
+
+//        }
+
+return NULL;
+}
 
 // Ελευθερώνει όλη τη μνήμη που δεσμεύει ο γράφος.
 // Οποιαδήποτε λειτουργία πάνω στο γράφο μετά το destroy είναι μη ορισμένη.
