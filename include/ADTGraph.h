@@ -18,6 +18,8 @@ typedef struct graph* Graph;
 
 typedef struct adj_node* AdjNode;
 
+typedef struct pq_path* Pq_Path;
+
 
 // Δείκτης σε συνάρτηση που επισκέπτεται τα στoιχεία του γράφου
 //typedef void (*GraphVisitFunc)(Graph graph, Pointer value);
